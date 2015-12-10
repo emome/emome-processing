@@ -7,11 +7,7 @@ from flask.ext.pymongo import PyMongo
 from pymongo import MongoClient
 
 
-# build the song-emotion matrix
-
-#app = Flask(__name__)
-#app.config['MONGO_DBNAME'] = 'primer'
-#mongo = PyMongo(app,config_prefix='MONGO')
+# build the suggestion-emotion matrix
 
 client = MongoClient('localhost', 27017)
 db = client.primer
@@ -33,9 +29,9 @@ emotion_mat = np.array(emotion_mat)
 # normalization
 emotion_mat = preprocessing.normalize(emotion_mat)
 
-print emotion_mat
+#print emotion_mat
 print emotion_mat.shape
-print suggestion_ids
+#print suggestion_ids
 
 '''
 song_mat = []
@@ -67,7 +63,7 @@ with open('old_lyrics_emotion.csv', 'rb') as csvfile:
 
 # extract K-Means
 
-n_clusters = 5
+n_clusters = 6
 clf = KMeans(n_clusters=n_clusters)
 predictions = clf.fit_predict(emotion_mat)
 means = clf.cluster_centers_
@@ -83,5 +79,5 @@ with open('suggestion_clusters.csv', 'wb') as csvfile:
     for suggestion_cluster in suggestion_clusters:
         writer.writerow(suggestion_cluster)
 
-print suggestion_clusters
-joblib.dump(clf, 'song_kmeans.pkl')
+#print suggestion_clusters
+joblib.dump(clf, 'suggestion_kmeans.pkl')
