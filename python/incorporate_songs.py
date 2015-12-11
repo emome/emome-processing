@@ -19,20 +19,20 @@ db = client.test
 print db.suggestions.find().count()
 
 song_info = []
-with open('song_info.csv', 'rb') as csvfile:
+with open('../data/song_info.csv', 'rb') as csvfile:
     lines = csv.reader(csvfile)
     song_info = [line for line in lines]
 song_info = np.array(song_info)
 print len(song_info)
 
 lyrics_emotion_ching = []
-with open('lyrics_emotion_ching_new.csv', 'rb') as csvfile:
+with open('../data/lyrics_emotion_ching_new.csv', 'rb') as csvfile:
     lines = csv.reader(csvfile)
     lyrics_emotion_ching = [line for line in lines]
 lyrics_emotion_ching = np.array(lyrics_emotion_ching)
 
 lyrics_emotion_huai = []
-with open('lyrics_emotion_huai_new.csv', 'rb') as csvfile:
+with open('../data/lyrics_emotion_huai_new.csv', 'rb') as csvfile:
     lines = csv.reader(csvfile)
     lyrics_emotion_huai = [line for line in lines]
 lyrics_emotion_huai = np.array(lyrics_emotion_huai)
