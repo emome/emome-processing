@@ -17,12 +17,12 @@ def extract_songs(sad, frustrated, angry, anxious):
     # input normalization
     input_emotion = preprocessing.normalize(np.array(input_emotion).reshape(1, -1))
 
-    clf = joblib.load('song_kmeans.pkl')
+    clf = joblib.load('../model/song_kmeans.pkl')
     predicted_class = clf.predict(input_emotion)
     #print predicted_class
 
     song_clusters = []
-    with open('song_clusters.csv', 'rb') as csvfile:
+    with open('../data/song_clusters.csv', 'rb') as csvfile:
         lines = csv.reader(csvfile)
         for line in lines:
             song_clusters.append(line)
