@@ -13,12 +13,12 @@ tokenizer = RegexpTokenizer(r'\w+')
 en_stopwords = stopwords.words('english')
 lyrics_emotion = []
 
-with open('../data/lyrics.txt', 'rb') as csvfile:
+with open('lyrics.txt', 'rb') as csvfile:
     lines = csv.reader(csvfile, delimiter='$')
     lines = [line for line in lines]    
 
 
-with open('../data/lyrics_emotion.csv', 'wb') as csvfile:
+with open('lyrics_emotion.csv', 'wb') as csvfile:
     writer = csv.writer(csvfile)
 
     artist = ''
@@ -94,3 +94,8 @@ with open('../data/lyrics_emotion.csv', 'wb') as csvfile:
                                 emotion_anxious += 1
 
 
+'''
+with open('lyrics_emotion.csv', 'wb') as csvfile:
+    writer = csv.writer(csvfile)
+    _ = map(writer.writerow, lyrics_emotion)
+'''    
