@@ -26,13 +26,13 @@ song_info = np.array(song_info)
 print len(song_info)
 
 lyrics_emotion_ching = []
-with open('../data/lyrics_emotion_ching_new.csv', 'rb') as csvfile:
+with open('../data/lyrics_emotion_01.csv', 'rb') as csvfile:
     lines = csv.reader(csvfile)
     lyrics_emotion_ching = [line for line in lines]
 lyrics_emotion_ching = np.array(lyrics_emotion_ching)
 
 lyrics_emotion_huai = []
-with open('../data/lyrics_emotion_huai_new.csv', 'rb') as csvfile:
+with open('../data/lyrics_emotion_02.csv', 'rb') as csvfile:
     lines = csv.reader(csvfile)
     lyrics_emotion_huai = [line for line in lines]
 lyrics_emotion_huai = np.array(lyrics_emotion_huai)
