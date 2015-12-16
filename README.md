@@ -1,4 +1,6 @@
 # emome-processing
+[![Code Climate](https://codeclimate.com/github/emome/emome-processing/badges/gpa.svg)](https://codeclimate.com/github/emome/emome-processing)
+
 A recommender system that uses crowdsourced data and public Spotify playlists to make recommendations to users
 
 #### What we've done
