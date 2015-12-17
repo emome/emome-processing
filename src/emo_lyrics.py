@@ -27,7 +27,9 @@ with open('lyrics_emotion.csv', 'wb') as csvfile:
                               # joy, love
 
     emotion_frustrated = 0    # humility, despair, shame, negative-fear
-                              # positive-fear, fearlessness, positive-expectation, enthusiasm, positive-hope
+                              # positive-fear, fearlessness,
+                              # positive-expectation, enthusiasm,
+                              # positive-hope
 
     emotion_angry = 0         # shame, general-dislike
                               # love, liking
@@ -39,13 +41,18 @@ with open('lyrics_emotion.csv', 'wb') as csvfile:
     for line in lines:
         if line == []:
             count += 1
-        elif line[0] == '******* This Lyrics is NOT for Commercial use *******':
+        elif line[0] == \
+            '******* This Lyrics is NOT for Commercial use *******':
             count = 0
             # store emotion data of one song
-            print "end of lyric"
-            lyric_emotion = [artist, title, emotion_sad, emotion_frustrated, emotion_angry, emotion_anxious]
-            #lyrics_emotion.append([artist, title, emotion_sad, emotion_frustrated, emotion_angry, emotion_anxious])
-            #print lyrics_emotion
+            lyric_emotion = [ \
+                artist, \
+                title, \
+                emotion_sad, \
+                emotion_frustrated, \
+                emotion_angry, \
+                emotion_anxious \
+            ]
             writer.writerow(lyric_emotion)
 
         else:

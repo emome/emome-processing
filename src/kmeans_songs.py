@@ -29,7 +29,6 @@ emotion_mat = np.array(emotion_mat)
 emotion_mat = preprocessing.normalize(emotion_mat)
 
 
-
 # extract K-Means
 
 n_clusters = 6
@@ -39,13 +38,12 @@ means = clf.cluster_centers_
 
 suggestion_clusters = []
 for c in range(n_clusters):
-    print sum(predictions==c)
-    suggestion_clusters.append([suggestion_ids[x] for x in range(len(predictions)) if predictions[x]==c])
+    suggestion_clusters.append([suggestion_ids[x] \
+        for x in range(len(predictions)) if predictions[x]==c])
 
 with open('../data/suggestion_clusters.csv', 'wb') as csvfile:
     writer = csv.writer(csvfile)
     for suggestion_cluster in suggestion_clusters:
         writer.writerow(suggestion_cluster)
 
-#print suggestion_clusters
 joblib.dump(clf, '../data/suggestion_kmeans.pkl')
