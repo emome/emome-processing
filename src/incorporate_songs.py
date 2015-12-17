@@ -16,14 +16,11 @@ client = MongoClient('localhost', 27017)
 db = client.test
 #db = client.primer
 
-print db.suggestions.find().count()
-
 song_info = []
 with open('../data/song_info.csv', 'rb') as csvfile:
     lines = csv.reader(csvfile)
     song_info = [line for line in lines]
 song_info = np.array(song_info)
-print len(song_info)
 
 lyrics_emotion_ching = []
 with open('../data/lyrics_emotion_ching_new.csv', 'rb') as csvfile:
@@ -37,8 +34,10 @@ with open('../data/lyrics_emotion_huai_new.csv', 'rb') as csvfile:
     lyrics_emotion_huai = [line for line in lines]
 lyrics_emotion_huai = np.array(lyrics_emotion_huai)
 
-lyrics_emotion = np.concatenate((lyrics_emotion_ching,lyrics_emotion_huai),axis=0)
-print lyrics_emotion.shape
+lyrics_emotion = np.concatenate( \
+    (lyrics_emotion_ching,lyrics_emotion_huai), \
+    axis=0 \
+)
 
 
 messages = [
@@ -59,12 +58,9 @@ for lyric_emo in lyrics_emotion:
     angry = int(lyric_emo[4])
     anxious = int(lyric_emo[5])
     if sad + frustrated + angry + anxious > 0:
-        print c
         c += 1
-        print artist, title
         while song_info[idx_song_info][0] != artist:
             idx_song_info += 1
-            print idx_song_info
 
         object_id = str(ObjectId())
 
@@ -92,7 +88,6 @@ for lyric_emo in lyrics_emotion:
             'message': messages[random.sample(range(len(messages)),1)[0]],
             'impact': None
         }
-        print results
 
         db.suggestions.insert_one({
             '_id': object_id,
